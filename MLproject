@@ -1,0 +1,6 @@
+name: Tweets
+
+entry_points:
+  main:
+    parameters:
+    command: "python train_classifier.py"
