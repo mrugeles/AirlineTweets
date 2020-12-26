@@ -4,7 +4,7 @@ import nltk
 import stanza
 from nltk.corpus import stopwords
 from nltk.tokenize import TweetTokenizer
-
+from nltk.stem.wordnet import WordNetLemmatizer
 
 class NLPUtils():
 

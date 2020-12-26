@@ -21,6 +21,7 @@ class DataUtils():
         """
         le = preprocessing.LabelEncoder()
         df = pd.read_csv(dataset_path)
+        df = df.loc[df['airline_sentiment'] != 'neutral']
         df['le'] = le.fit_transform(df['airline_sentiment'])
 
         X = df['text']

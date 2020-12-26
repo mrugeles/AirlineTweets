@@ -1,5 +1,6 @@
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.naive_bayes import GaussianNB, MultinomialNB
+from sklearn.svm import SVC
 from sklearn.base import TransformerMixin
 from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
 from sklearn.metrics import make_scorer, accuracy_score, f1_score, precision_score
@@ -23,12 +24,12 @@ class ModelUtils():
             GridSearchCV instance with the tuned model.
         """
         nlpUtils = NLPUtils()
-        model = GaussianNB()
+        model = SVC()
         pipeline = Pipeline([
              ('vect', CountVectorizer(tokenizer=nlpUtils.tokenize)),
              ('tfidf', TfidfTransformer()),
              ('dense_transformer', DenseTransformer()),
-             ('clf', MultiOutputClassifier(model))
+             ('clf', model)
         ])
 
         parameters = {
