@@ -6,6 +6,7 @@ from nltk.corpus import stopwords
 from nltk.tokenize import TweetTokenizer
 from nltk.stem.wordnet import WordNetLemmatizer
 
+
 class NLPUtils():
 
     def __init__(self):
@@ -30,8 +31,10 @@ class NLPUtils():
         """
         text = text.lower()
         tokens = self.tweet_tokenizer.tokenize(text)
-        tokens = [token for token in tokens if 'http' not in token]
+        tokens = [token for token in tokens if 'http' not in token and token[0] != '#' and token[0] != '@']
         text = re.sub(r"[^a-záéíóúÁÉÓÚÑñüÜ]", " ", ' '.join(tokens))
+        if text.strip() == '':
+            text = 'empty_text'
 
         doc = self.nlp(text)
 

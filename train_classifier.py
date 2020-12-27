@@ -43,10 +43,8 @@ def save_model():
 '''
 
 if __name__ == '__main__':
-    print('Main')
     X, y, category_names = dataUtils.load_data('dataset/tweets_public.csv')
     print(y)
-    #X = pre_process(X)
     print('Data preprocesed')
     with mlflow.start_run():
         build_model(X, y, category_names)

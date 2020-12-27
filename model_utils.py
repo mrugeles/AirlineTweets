@@ -24,7 +24,7 @@ class ModelUtils():
             GridSearchCV instance with the tuned model.
         """
         nlpUtils = NLPUtils()
-        model = SVC()
+        model = RandomForestClassifier()
         pipeline = Pipeline([
              ('vect', CountVectorizer(tokenizer=nlpUtils.tokenize)),
              ('tfidf', TfidfTransformer()),
@@ -33,6 +33,8 @@ class ModelUtils():
         ])
 
         parameters = {
+            'clf__n_estimators': [100, 150, 200],
+            'clf__class_weight': ['balanced', 'balanced_subsample']
         }
 
         scorer = make_scorer(accuracy_score)
